@@ -11,6 +11,8 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
 {
     var yemekKatalogu=[String]()
     var yemekGorselIsimleri=[String]()
+    var secilenIsim = ""
+    var secilenGorsel = ""
     
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
@@ -59,7 +61,19 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+         secilenIsim=yemekKatalogu[indexPath.row]
+         secilenGorsel=yemekGorselIsimleri[indexPath.row]
         performSegue(withIdentifier: "ikincivc", sender: nil)}
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ikincivc"{
+            let destinationvc=segue.destination as! DetailsViewController
+            destinationvc.secilenYemek=secilenIsim
+            destinationvc.secilenYemekResmi=secilenGorsel
+            
+        }
+    }
+    
     
 }
     
