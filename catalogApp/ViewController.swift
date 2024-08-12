@@ -11,13 +11,13 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
 {
     var yemekKatalogu=[String]()
     var yemekGorselIsimleri=[String]()
-
+    
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate=self
         tableView.dataSource=self
-      
+        
         yemekKatalogu.append("musakka")
         yemekKatalogu.append("pilav")
         yemekKatalogu.append("corba")
@@ -26,7 +26,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         //var yemekGorselleri=[UIImage]()
         
         //yemekGorselleri.append(UIImage(named: "musakka")!)
-       
+        
         yemekGorselIsimleri.append("musakka")
         yemekGorselIsimleri.append("pilav")
         yemekGorselIsimleri.append("corba")
@@ -44,6 +44,20 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         cell.textLabel?.text=yemekGorselIsimleri[indexPath.row]
         return cell
     }
-
+    
+    func tableView(_ tableView: UITableView, commit editingStyle:UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath)  {
+        if editingStyle == .delete{
+            yemekKatalogu.remove(at: indexPath.row)
+            yemekGorselIsimleri.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.fade)
+            
+        }
+        
+        
+        
+        
+        
+        
+    }
+    
 }
-
