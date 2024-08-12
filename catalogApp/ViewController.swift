@@ -55,11 +55,12 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
             
         }
         
-        
-        
-        
-        
+       
         
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "ikincivc", sender: nil)}
     
 }
+    
+
